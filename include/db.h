@@ -1,14 +1,17 @@
 #ifndef MJONES_DB_H
 #define MJONES_DB_H
 
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sqlite3.h>
 
-typedef struct SQLITE_MIGRATIONS{
-  
-}
+typedef struct SQLITE_MIGRATIONS
+{
 
-sqlite3* create_db();
-void free_db(sqlite3 *db);
+} SQLITE_MIGRATION;
 
-#endif //MJONES_DB_H
+sqlite3 *create_db();
+void close_db(sqlite3 *db);
+
+#endif // MJONES_DB_H
