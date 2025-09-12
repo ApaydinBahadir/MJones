@@ -1,6 +1,7 @@
-#include "db.c"
+#include "settings.h"
 
-int main(void) {
-
+int main(void)
+{
+    parseSetting("C:/Users/bahadirapaydin/Desktop/projects/deneme");
     return 0;
 }

@@ -2,7 +2,7 @@
 #define MJONES_SETTINGS_H
 #include <stdlib.h>
 
-const char *home = getenv("HOME");
+const char *settings_get_home(void);
 static const char *settingsFileName = "settings.json";
 
 typedef struct settings
@@ -11,8 +11,8 @@ typedef struct settings
   char *value;
 } settings;
 
-static char *getFilePath();
+char *getFilePath();
 
-settings *parseSetting();
+settings *parseSetting(char *path);
 
 #endif // MJONES_SETTINGS_H

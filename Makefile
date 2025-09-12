@@ -2,6 +2,7 @@
 APP       := app
 SRC_DIR   := src
 BUILD_DIR := build
+INC_DIR   := include
 BIN_DIR   := bin
 
 # SQLite amalgamation
@@ -37,8 +38,11 @@ else
 endif
 # (LOAD_EXTENSION kullanacaksan) Linux/macOS'ta: LDLIBS += -ldl
 
+# Include include
+CFLAGS += -I${INC_DIR}
+
 # SQLite bayrakları
-CFLAGS    += -I$(SQLITE_DIR) -DSQLITE_THREADSAFE=1 -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_DEFAULT_FOREIGN_KEYS=1
+CFLAGS    += -isystem $(SQLITE_DIR) -DSQLITE_THREADSAFE=1 -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_DEFAULT_FOREIGN_KEYS=1 -fdiagnostics-color=always
 CFLAGS    += -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_RTREE
 
 # -------- Yardımcı makrolar (platform bağımlı komutlar) --------
