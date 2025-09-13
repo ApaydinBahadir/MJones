@@ -3,16 +3,28 @@
 #include <stdlib.h>
 
 const char *settings_get_home(void);
-static const char *settingsFileName = "settings.json";
+static const char *settingsFileName = "settings";
 
-typedef struct settings
+typedef struct settings_item
 {
   char *key;
   char *value;
+} settings_item;
+
+typedef struct
+{
+  settings_item *items;
+  size_t count;
 } settings;
 
-char *getFilePath();
+void settings_init(settings *settings, char *settings_file);
+void settings_free(settings *settings);
+void settings_add(settings *settings, const char *key, const char *value);
 
-settings *parseSetting(char *path);
+char *get_file_path();
 
-#endif // MJONES_SETTINGS_H
+void *parse_setting(settings *settings);
+
+void parse_line(char *line, settings *settings);
+
+#endif // MJONES_SETTINGS
